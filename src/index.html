@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrakingMoney</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function addExpense() {
+            // Obtener los valores del formulario
+            const product = document.getElementById("product").value;
+            const amount = document.getElementById("amount").value;
+            const description = document.getElementById("description").value;
+
+            if (product && amount && description) {
+                // Crear una nueva fila para la tabla
+                const table = document.getElementById("expensesTable");
+                const newRow = table.insertRow();
+
+                // Agregar las celdas a la fila
+                const productCell = newRow.insertCell(0);
+                const amountCell = newRow.insertCell(1);
+                const descriptionCell = newRow.insertCell(2);
+
+                // Insertar los valores en las celdas
+                productCell.textContent = product;
+                amountCell.textContent = "$" + parseFloat(amount).toFixed(2);
+                descriptionCell.textContent = description;
+
+                // Limpiar los campos del formulario
+                document.getElementById("product").value = "";
+                document.getElementById("amount").value = "";
+                document.getElementById("description").value = "";
+            } else {
+                alert("Por favor completa todos los campos.");
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white font-bold text-xl">TrakingMoney</a>
+            <div class="space-x-4">
+                <a href="profile.html" class="text-white hover:bg-blue-700 py-2 px-4 rounded-md">Perfil</a>
+                <a href="expenses.html" class="text-white hover:bg-blue-700 py-2 px-4 rounded-md">Gastos</a>
+                <a href="/logout" class="text-white hover:bg-blue-700 py-2 px-4 rounded-md">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full mt-6">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Gestor de Gastos</h1>
+
+            <!-- Formulario para agregar un nuevo gasto -->
+            <div class="mb-6">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Producto</label>
+                        <input type="text" id="product"
+                            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Producto" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Monto</label>
+                        <input type="number" id="amount" step="0.01"
+                            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Monto" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Descripción</label>
+                        <input type="text" id="description"
+                            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Descripción" required>
+                    </div>
+                </div>
+                <button onclick="addExpense()"
+                    class="mt-4 w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700">Agregar
+                    Gasto</button>
+            </div>
+
+            <!-- Tabla para mostrar los gastos -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead>
+                        <tr>
+                            <th
+                                class="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Producto</th>
+                            <th
+                                class="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Monto</th>
+                            <th
+                                class="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expensesTable">
+                        <!-- Las filas generadas dinámicamente aparecerán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

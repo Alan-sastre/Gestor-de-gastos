@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg1: 'rgb(108, 0, 162)',
+                        bg2: 'rgb(0, 17, 82)',
+                        interactive: 'rgb(140, 100, 255)',
+                    },
+                    keyframes: {
+                        moveInCircle: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '50%': { transform: 'rotate(180deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        moveVertical: {
+                            '0%': { transform: 'translateY(-50%)' },
+                            '50%': { transform: 'translateY(50%)' },
+                            '100%': { transform: 'translateY(-50%)' },
+                        },
+                        moveHorizontal: {
+                            '0%': { transform: 'translateX(-50%) translateY(-10%)' },
+                            '50%': { transform: 'translateX(50%) translateY(10%)' },
+                            '100%': { transform: 'translateX(-50%) translateY(-10%)' },
+                        },
+                    },
+                    animation: {
+                        moveInCircle: 'moveInCircle 20s linear infinite',
+                        moveVertical: 'moveVertical 30s ease infinite',
+                        moveHorizontal: 'moveHorizontal 40s ease infinite',
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Fondo de Gradientes Animados -->
+    <div class="relative w-screen h-screen overflow-hidden bg-gradient-to-r from-bg1 to-bg2">
+
+        <!-- Gradients Animados -->
+        <div class="absolute inset-0 filter blur-2xl">
+            <!-- Círculo 1 -->
+            <div
+                class="absolute bg-gradient-radial from-[rgba(18,113,255,0.8)] to-transparent w-[80%] h-[80%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-moveVertical">
+            </div>
+
+            <!-- Círculo 2 -->
+            <div
+                class="absolute bg-gradient-radial from-[rgba(221,74,255,0.8)] to-transparent w-[80%] h-[80%] top-1/2 left-1/2 transform-origin-[50%_400px] animate-moveInCircle">
+            </div>
+
+            <!-- Círculo 3 -->
+            <div
+                class="absolute bg-gradient-radial from-[rgba(100,220,255,0.8)] to-transparent w-[80%] h-[80%] top-[calc(50%+200px)] left-[calc(50%-500px)] transform-origin-[50%_400px] animate-moveInCircle">
+            </div>
+
+            <!-- Círculo 4 -->
+            <div
+                class="absolute bg-gradient-radial from-[rgba(200,50,50,0.8)] to-transparent w-[80%] h-[80%] top-1/2 left-1/2 transform-origin-[50%-200px] opacity-70 animate-moveHorizontal">
+            </div>
+
+            <!-- Círculo 5 -->
+            <div
+                class="absolute bg-gradient-radial from-[rgba(180,180,50,0.8)] to-transparent w-[160%] h-[160%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transform-origin-[calc(50%-800px)_calc(50%+200px)] animate-moveInCircle">
+            </div>
+        </div>
+
+        <!-- Formulario de Login -->
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
+                <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
+                <form action="/login" method="POST" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" name="email"
+                            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter your email" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" name="password"
+                            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700">Login</button>
+                </form>
+                <p class="mt-4 text-sm text-center">Don't have an account? <a href="register.html"
+                        class="text-blue-600 hover:underline">Register</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
